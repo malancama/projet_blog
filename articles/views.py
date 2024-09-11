@@ -86,3 +86,19 @@ def add_comment(request, id):
             }
             return render(request, 'articles/detail.html', context)
     return redirect('article_detail', article.id)
+
+def category(request):
+    if request.method == "POST":
+        Form = Article_from(request.POST, request.FILES)
+        if Form.is_valid():
+            article = Form.save(commit=False)  # On sauvegarde le formulaire
+            article.user = request.user
+            article.save()
+            return redirect(reverse('list_articles'))
+    else:
+        Form = Article_from()
+        context = {
+            'Form': Form
+        }
+
+    return render(request, 'articles/ajout.html', context)
