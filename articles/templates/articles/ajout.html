@@ -2,6 +2,9 @@
 {% include 'articles/navbar.html' %}
 <link rel="stylesheet" href="{% static 'articles/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'articles/dist/css/bootstrap.min.css' %}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
 
 {% if user.is_authenticated %}
 {% block content %}
