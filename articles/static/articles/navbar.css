@@ -1,0 +1,24 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.nav-link {
+    color: #ffffff !important;
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+    color: #ffc107 !important;
+}
+.navbar {
+    background-color: #343a40;
+}
+.dropdown-item:hover {
+    background-color: #ffc107;
+    color: #ffffff !important;
+}
+.bar{
+    text-align: center;
+}

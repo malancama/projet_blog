@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>mino16</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+        <!-- Favicon -->
+        <link href="{% static 'articles/img/malan.jpg' %}" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link href="{% static 'articles/fontawesome/css/all.css' %}" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="{% static 'articles/css/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="wrapper">
+            <!-- Sidebar Start -->
+            {% include 'articles/sidebar.html' %}
+            <!-- Sidebar End -->
+
+            <div class="content" style="padding-top: 70px;">
+                <!-- Navbar Start -->
+                {% include 'articles/navbar.html' %}
+                <!-- Navbar End -->
+
+                <!-- Search Bar Start -->
+                <div class="container mt-4">
+                    <form method="GET" action="{% url 'list_articles' %}">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control"
+                                   placeholder="Rechercher des articles...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary"
+                                        type="submit">Rechercher
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Search Bar End -->
+
+                <!-- Blog List Start -->
+                <div class="container bg-white pt-5">
+                    {% for article in articles %}
+                    <div class="row blog-item px-3 pb-5">
+                        <div class="col-md-5">
+                            <img class="img-fluid mb-4 mb-md-0" src="{{ article.image.url }}"
+                                 alt="{{ article.title }}">
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">
+                                {{ article.title }}
+                            </h3>
+                            <div class="d-flex mb-3">
+                                <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i>{{ article.date_pub|date:"d F Y" }}</small>
+                                <small class="mr-2 text-muted"><i class="fa fa-folder"></i>{{ article.sumary }}</small>
+                                <small class="mr-2 text-muted"><i class="fa fa-comments"></i></small>
+                            </div>
+                            <p>{{ article.content }}</p>
+                            <a class="btn btn-link p-0" href="{% url 'article_detail' article.id %}">Read More
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Blog List End -->
+
+                <!-- Footer Start -->
+                <div class="container py-4 bg-secondary text-center">
+                    <p class="m-0 text-white">
+                        © <a class="text-white font-weight-bold" href="#">Your Site Name</a>.
+                        All Rights Reserved. Designed by
+                        <a class="text-white font-weight-bold" href="https://htmlcodex.com">Malan camara</a>
+                    </p>
+                </div>
+                <!-- Footer End -->
+            </div>
+        </div>
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="{% static 'articles/js/main.js' %}"></script>
+    </body>
+</html>
