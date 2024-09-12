@@ -81,7 +81,7 @@ DATABASES = {
         "NAME": "blog",
         "USER": "root",
         "PASSWORD": "malan",
-        "HOST": "localhost",
+        "HOST": "https://malan.pythonanywhere.com/",
         "PORT": "3306",
     }
 }
