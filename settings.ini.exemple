@@ -1,0 +1,9 @@
+[setting]
+SECRET_KEY = clesduprodut
+DEBUG = True
+DB_ENGINE=django.db.backends.mysql
+DB_NAME=dbname
+DB_USER=username
+DB_PASSWORD=password
+DB_HOST=localhost
+DB_PORT=port

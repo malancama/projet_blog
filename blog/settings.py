@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from pathlib import Path
 import environ
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env()
@@ -23,8 +24,8 @@ environ.Env.read_env(env_file=str(BASE_DIR/ "blog" /".env"))
 SECRET_KEY=env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-DEBUG= env.bool("DEBUG", False)
+from decouple import config
+DEBUG = config('DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 
@@ -77,14 +78,15 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.mysql",
-        "NAME": "blog",
-        "USER": "malan",
-        "PASSWORD": "mino1010",
-        "HOST": "malan.mysql.pythonanywhere-services.com",
-        "PORT": "3306",
+        'ENGINE': config('DB_ENGINE', default='django.db.backends.mysql'),
+        'NAME': config('DB_NAME', default='blog'),
+        'USER': config('DB_USER', default='root'),
+        'PASSWORD': config('DB_PASSWORD', default='malan'),
+        'HOST': config('DB_HOST', default='localhost'),
+        'PORT': config('DB_PORT', default='3306'),
     }
 }
+
 
 
 
