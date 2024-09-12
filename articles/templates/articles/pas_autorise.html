@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'articles/dist/css/bootstrap.min.css' %}">
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <title>Accès non autorisé</title>
+</head>
+<body class="bg-light d-flex justify-content-center align-items-center vh-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card shadow-lg border-0 p-4">
+                    <div class="card-body text-center">
+                        <h1 class="display-4 text-danger mb-3">Accès non autorisé</h1>
+                        <p class="lead text-muted">Vous n'avez pas de droit sur cet article</p>
+                        <button class="btn btn-secondary btn-sm mt-3" onClick="history.back();">Retour</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'articles/dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -36,22 +36,20 @@ def ajout_article(request):
     return render(request, 'articles/ajout.html', context)
 
 
-def modifier(request, id):
-    # Récupérez l'objet Eleve à modifier
-    articles = get_object_or_404(Article, id=id)
-    M_Form = Article_from(request.POST, request.FILES, instance=articles)
-    if request.method == 'POST':
-        # Créez un formulaire pour la modification
+from django.http import HttpResponseForbidden
 
+def modifier(request, id):
+    articles = get_object_or_404(Article, id=id)
+    if articles.user != request.user:
+        return render(request, 'articles/pas_autorise.html', {'article': articles})
+    M_Form = Article_from(request.POST or None, request.FILES or None, instance=articles)
+    if request.method == 'POST':
         if M_Form.is_valid():
-            M_Form.save()  # Sauvegardez les modifications
+            M_Form.save()
             print('Formulaire est validé')
-            return redirect(list_article)
+            return redirect('list_article')
         else:
             print('Formulaire invalide')
-    else:
-        # Si la méthode HTTP est GET, affichez le formulaire de modification
-        M_Form = Article_from(instance=articles)
     return render(request, 'articles/update.html', {"M_Form": M_Form})
 
 
@@ -64,9 +62,11 @@ def article_detail(request, id):
 @login_required(login_url='/login/')
 def delete_article(request, id):
     supprime = get_object_or_404(Article, pk=id)
-    supprime.delete()
-
-    return redirect(list_article)
+    if supprime.user != request.user:
+        return render(request, 'articles/pas_autorise.html', {'article': supprime})
+    else:
+        supprime.delete()
+        return redirect(list_article)
 
 
 @login_required(login_url='/login/')
