@@ -36,8 +36,6 @@ def ajout_article(request):
     return render(request, 'articles/ajout.html', context)
 
 
-from django.http import HttpResponseForbidden
-
 def modifier(request, id):
     articles = get_object_or_404(Article, id=id)
     if articles.user != request.user:
@@ -100,5 +98,4 @@ def category(request):
         context = {
             'Form': Form
         }
-
     return render(request, 'articles/ajout.html', context)
