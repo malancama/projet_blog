@@ -79,9 +79,9 @@ DATABASES = {
     'default': {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "blog",
-        "USER": "root",
-        "PASSWORD": "malan",
-        "HOST": "https://malan.pythonanywhere.com/",
+        "USER": "malan",
+        "PASSWORD": "mino1010",
+        "HOST": "malan.mysql.pythonanywhere-services.com",
         "PORT": "3306",
     }
 }
