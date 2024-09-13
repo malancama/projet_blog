@@ -55,15 +55,3 @@ def logOut(request):
     logout(request)
     messages.success(request, 'Vous avez été bien deconnecté')
     return redirect('login')
-
-
-
-def my_view(request):
-    username = request.POST["username"]
-    password = request.POST["password"]
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect()
-    else:
-        print('bad authentication')
