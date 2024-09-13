@@ -79,13 +79,14 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': env('DB_ENGINE', default='django.db.backends.mysql'),
-        'NAME': env('DB_NAME', default='blog'),
-        'USER': env('DB_USER', default='root'),
-        'PASSWORD': env('DB_PASSWORD', default='malan'),
-        'HOST': env('DB_HOST', default='localhost'),
+        'NAME': env('DB_NAME', default='malan_blog'),
+        'USER': env('DB_USER', default='malan'),
+        'PASSWORD': env('DB_PASSWORD', default='Mino1010'),
+        'HOST': env('DB_HOST', default='malan.mysql.pythonanywhere-services.com'),
         'PORT': env('DB_PORT', default='3306'),
     }
 }
+
 
 
 
